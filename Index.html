@@ -1,0 +1,85 @@
+<!--make html file-->
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+
+<body>
+    <div class="header">
+        <h2>Configuration Possible</h2>
+    </div>
+    <div class="content">
+        <div class="Router">
+            <h3>Router Config</h3>
+            </center>
+            <p>
+                <label class="form-label" for="RouterPath">Le port série</label> <input type="text" name="RouterPath" class="form-control" id=""><br>
+                <label class="form-label" for="RouterHostname">l'hostname</label> <input type="text" name="RouterHostname" class="form-control" id=""><br>
+                <button class="btn btn-secondary" onclick="RouterConfig()">Build Default Config</button>
+            </p>
+        </div>
+        <div class="Switch">
+            <h3>Switch Config</h3>
+            </center>
+            <p>
+                <label class="form-label" for="SwitchPath">Le port série</label> <input type="text" name="SwitchPath" class="form-control" id=""><br>
+                <label class="form-label" for="SwitchHostname">l'hostname</label> <input type="text" name="SwitchHostname" class="form-control" id=""><br>
+                <label class="form-label" for="SwitchIpAdress">l'ip du Vlan1</label> <input type="text" placeholder="0000.0000.0000.0000" name="SwitchIpAdress" class="form-control" id=""><br>
+                <label class="form-label" for="SwitchSubnetMask">le masque de sous-réseau du Vlan1</label> <input type="text" placeholder="0000.0000.0000.0000" name="SwitchSubnetMask" class="form-control" id=""><br>
+                <label class="form-label" for="SwitchDefaultGateway">La passerelle par défaut du Vlan1</label> <input type="text" placeholder="0000.0000.0000.0000" name="SwitchDefaultGateway" class="form-control" id=""><br>
+                <button class="btn btn-secondary" onclick="SwitchConfig()">Build Default Config</button>
+            </p>
+        </div>
+    </div>
+</body>
+<script>
+    function RouterConfig() {
+        let path = document.getElementsByName("RouterPath")[0].value;
+        let Hostname = document.getElementsByName("RouterHostname")[0].value;
+        if (path == "") {
+            alert("Please enter a path ");
+            return;
+        }
+        if (Hostname == "") {
+            alert("Please enter a hostname ");
+            return;
+        }
+        location.href = "/RouterConfig?path=" + path + "&Hostname=" + Hostname;
+    }
+
+    //function switch config
+    function SwitchConfig() {
+        let path = document.getElementsByName("SwitchPath")[0].value;
+        let Hostname = document.getElementsByName("SwitchHostname")[0].value;
+        let IpAdress = document.getElementsByName("SwitchIpAdress")[0].value;
+        let SubnetMask = document.getElementsByName("SwitchSubnetMask")[0].value;
+        let DefaultGateway = document.getElementsByName("SwitchDefaultGateway")[0].value;
+        if (path == "") {
+            alert("Please enter a path ");
+            return;
+        }
+        if (Hostname == "") {
+            alert("Please enter a hostname ");
+            return;
+        }
+        if (IpAdress == "") {
+            alert("Please enter a ip adress ");
+            return;
+        }
+        if (SubnetMask == "") {
+            alert("Please enter a subnet mask ");
+            return;
+        }
+        if (DefaultGateway == "") {
+            alert("Please enter a default gateway ");
+            return;
+        }
+        location.href = "/SwitchConfig?path=" + path + "&Hostname=" + Hostname + "&IpAdress=" + IpAdress + "&SubnetMask=" + SubnetMask + "&DefaultGateway=" + DefaultGateway;
+    }
+</script>
+
+</html>
